@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-18">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/postgresql-42.7.3.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/jfreechart-1.0.19/jfreechart-1.0.19-demo.jar"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/jfreechart-1.0.19.zip"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/Yeni klasör/barcodes-8.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/Yeni klasör/bouncy-castle-adapter-8.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/Yeni klasör/bouncy-castle-connector-8.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/Yeni klasör/bouncy-castle-fips-adapter-8.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/Yeni klasör/commons-8.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/Yeni klasör/font-asian-8.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/Yeni klasör/forms-8.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/Yeni klasör/hyph-8.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/Yeni klasör/io-8.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/Yeni klasör/kernel-8.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/Yeni klasör/layout-8.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/Yeni klasör/pdfa-8.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/Yeni klasör/pdftest-8.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/Yeni klasör/pdfua-8.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/Yeni klasör/sign-8.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/Yeni klasör/styled-xml-parser-8.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/Yeni klasör/svg-8.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/Yeni klasör (2)/slf4j-api-2.0.13.jar"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/Yeni klasör (2)/slf4j-simple-2.0.13.jar"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/javax.mail-1.6.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/esra6/Downloads/jakarta.activation-1.2.2.jar"/>
+	<classpathentry kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

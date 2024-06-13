@@ -1,0 +1,162 @@
+-- Table: public.uyeler
+
+-- DROP TABLE IF EXISTS public.uyeler;
+
+CREATE TABLE IF NOT EXISTS public.uyeler
+(
+    uye_id integer NOT NULL DEFAULT nextval('uye_id_nextwal'::regclass),
+    adsoyad character varying(50) COLLATE pg_catalog."default",
+    kullanici_ad character varying(50) COLLATE pg_catalog."default",
+    email character varying(100) COLLATE pg_catalog."default",
+    sifre character varying(5) COLLATE pg_catalog."default",
+    dogum_tarihi character varying(15) COLLATE pg_catalog."default",
+    CONSTRAINT uyeler_email_key UNIQUE (email),
+    CONSTRAINT uyeler_kullanici_ad_key UNIQUE (kullanici_ad)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.uyeler
+    OWNER to postgres;
+	
+	-- Table: public.kullanicigiris
+
+-- DROP TABLE IF EXISTS public.kullanicigiris;
+
+CREATE TABLE IF NOT EXISTS public.kullanicigiris
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    name text COLLATE pg_catalog."default",
+    password text COLLATE pg_catalog."default",
+    CONSTRAINT unique_id2 UNIQUE (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.kullanicigiris
+    OWNER to postgres;
+	-- Table: public.admingiris
+
+-- DROP TABLE IF EXISTS public.admingiris;
+
+CREATE TABLE IF NOT EXISTS public.admingiris
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    name text COLLATE pg_catalog."default",
+    password text COLLATE pg_catalog."default",
+    CONSTRAINT unique_id5 UNIQUE (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.admingiris
+    OWNER to postgres;
+	-- Table: public.rezervasyonlar
+
+-- DROP TABLE IF EXISTS public.rezervasyonlar;
+
+CREATE TABLE IF NOT EXISTS public.rezervasyonlar
+(
+    rezervasyonlarid integer NOT NULL DEFAULT nextval('rezervasyonlar_rezervasyonlarid_seq'::regclass),
+    odaid integer,
+    ad character varying(15) COLLATE pg_catalog."default",
+    soyad character varying(15) COLLATE pg_catalog."default",
+    giristarihi character varying(10) COLLATE pg_catalog."default",
+    cikistarihi character varying(10) COLLATE pg_catalog."default",
+    telno character varying(15) COLLATE pg_catalog."default",
+    kullanici_id integer,
+    odeme_durum character varying(15) COLLATE pg_catalog."default" DEFAULT 'ödenmedi'::character varying,
+    toplam_borc character varying(15) COLLATE pg_catalog."default" DEFAULT 0,
+    kartno character varying(15) COLLATE pg_catalog."default" DEFAULT 0,
+    CONSTRAINT rezervasyonlar_pkey PRIMARY KEY (rezervasyonlarid),
+    CONSTRAINT rezervasyonlar_odaid_fkey FOREIGN KEY (odaid)
+        REFERENCES public."Odalar" (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.rezervasyonlar
+    OWNER to postgres;
+	-- Table: public.personeller
+
+-- DROP TABLE IF EXISTS public.personeller;
+
+CREATE TABLE IF NOT EXISTS public.personeller
+(
+    personel_id integer NOT NULL DEFAULT nextval('personel_id_seq'::regclass),
+    ad character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    soyad character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    departman character varying(50) COLLATE pg_catalog."default",
+    maas character varying(50) COLLATE pg_catalog."default",
+    tc character varying(11) COLLATE pg_catalog."default",
+    telefon character varying(15) COLLATE pg_catalog."default",
+    cikis_tarihi character varying(14) COLLATE pg_catalog."default" DEFAULT 'yok'::character varying,
+    durum character varying(5) COLLATE pg_catalog."default" DEFAULT 'aktif'::character varying,
+    sicilno character varying(5) COLLATE pg_catalog."default",
+    giristarihi character varying(15) COLLATE pg_catalog."default",
+    dogumtarih character varying(15) COLLATE pg_catalog."default",
+    CONSTRAINT personeller_pkey PRIMARY KEY (personel_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.personeller
+    OWNER to postgres;
+	-- Table: public.maas_odeme
+
+-- DROP TABLE IF EXISTS public.maas_odeme;
+
+CREATE TABLE IF NOT EXISTS public.maas_odeme
+(
+    odeme_id integer NOT NULL DEFAULT nextval('maas_odeme_odeme_id_seq'::regclass),
+    personel_id integer NOT NULL,
+    odeme_tarihi character varying(15) COLLATE pg_catalog."default",
+    durum character varying(10) COLLATE pg_catalog."default" DEFAULT 'Ödenmedi'::character varying,
+    iban character varying(25) COLLATE pg_catalog."default",
+    CONSTRAINT maas_odeme_pkey PRIMARY KEY (odeme_id),
+    CONSTRAINT maas_odeme_personel_id_fkey FOREIGN KEY (personel_id)
+        REFERENCES public.personeller (personel_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.maas_odeme
+    OWNER to postgres;
+	-- Table: public.ekhizmetler
+
+-- DROP TABLE IF EXISTS public.ekhizmetler;
+
+CREATE TABLE IF NOT EXISTS public.ekhizmetler
+(
+    id integer NOT NULL DEFAULT nextval('ekhizmetler_id_seq'::regclass),
+    hizmetadi text COLLATE pg_catalog."default" NOT NULL,
+    fiyat numeric NOT NULL,
+    CONSTRAINT ekhizmetler_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.ekhizmetler
+    OWNER to postgres;
+	-- Table: public.Odalar
+
+-- DROP TABLE IF EXISTS public."Odalar";
+
+CREATE TABLE IF NOT EXISTS public."Odalar"
+(
+    id integer NOT NULL DEFAULT nextval('odalar_id_seq'::regclass),
+    "odanumarası" integer,
+    odatipi text COLLATE pg_catalog."default",
+    durum character varying(10) COLLATE pg_catalog."default" DEFAULT 'boş'::character varying,
+    fiyat integer,
+    CONSTRAINT unique_id UNIQUE (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."Odalar"
+    OWNER to postgres;
